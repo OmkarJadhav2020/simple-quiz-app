@@ -127,8 +127,6 @@ const Home: React.FC = () => {
     ]);
   };
 
-
-
   // Chart data for correct, incorrect, and not attempted answers
   const [chartData, setChartData] = useState<ChartData[]>([
     { id: "Correct", label: "Correct", value: 0, color: "hsl(90, 34%, 63%)" },
@@ -167,8 +165,6 @@ const Home: React.FC = () => {
       setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
     }
   };
-
-
 
   // Chart data for correct and incorrect answers
 
@@ -236,7 +232,7 @@ const Home: React.FC = () => {
           // Quiz in progress
           <div>
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold mb-3">Quiz by Quiz</h2>
+              <h2 className="text-xl font-semibold mb-3">Quiz by Quiz20</h2>
               <button
                 className="bg-blue-500 text-white w-4/12 px-2 py-2 rounded-3xl"
                 onClick={validateAnswers}
@@ -249,14 +245,23 @@ const Home: React.FC = () => {
               {[...Array(questions.length)].map((_, index) => (
                 <div
                   key={index}
-                  className={`flex items-center relative justify-center w-9 h-9 mb-8 rounded-full cursor-pointer ${
-                    index === currentQuestionIndex
-                      ? "bg-blue-500"
-                      : "bg-gray-300"
-                  }`}
+                  className={`flex items-center relative justify-center w-9 h-9 mb-8 rounded-full cursor-pointer 
+        ${
+          index === currentQuestionIndex
+            ? "bg-blue-500" // Highlight the current question
+            : selectedOptions[index]
+            ? selectedOptions[index]
+              ? "bg-green-500" // Solved question with tick mark (correct)
+              : "bg-orange-500" // Visited but not solved question
+            : "bg-gray-300" // Unvisited question
+        }`}
                   onClick={() => setCurrentQuestionIndex(index)}
                 >
-                  <div className="w-4 h-4 bg-white rounded-full"></div>
+                  {selectedOptions[index] && (
+                    <span className="text-white font-bold">
+                      {selectedOptions[index] ? "✓" : ""}
+                    </span>
+                  )}
                   <span className="absolute bottom-[-25]">{index + 1}</span>
                 </div>
               ))}
@@ -270,7 +275,7 @@ const Home: React.FC = () => {
                 <button>
                   <CiShare2 />
                 </button>
-                <button >
+                <button>
                   <MdGTranslate />
                 </button>
                 <button onClick={openModal}>
