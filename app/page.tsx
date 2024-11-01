@@ -168,9 +168,7 @@ const Home: React.FC = () => {
     }
   };
 
-  const translate = () => {
-    console.log("HE HE");
-  };
+
 
   // Chart data for correct and incorrect answers
 
@@ -272,7 +270,7 @@ const Home: React.FC = () => {
                 <button>
                   <CiShare2 />
                 </button>
-                <button onClick={translate}>
+                <button >
                   <MdGTranslate />
                 </button>
                 <button onClick={openModal}>
