@@ -7,7 +7,7 @@ import { CiShare2 } from "react-icons/ci";
 import { MdOutlineReportProblem } from "react-icons/md";
 import ReportModal from "./components/ReportModal";
 import { FaEye } from "react-icons/fa";
-import { Translate } from "@google-cloud/translate/build/src/v2";
+
 interface Question {
   question: string;
   correct_answer: string;
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
   }>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [score, setScore] = useState<number | null>(null);
-  const [correctAnswers, setCorrectAnswers] = useState<AnswerFeedback[]>([]);
+  // const [correctAnswers, setCorrectAnswers] = useState<AnswerFeedback[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fetch Questions
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
     });
 
     setScore(score);
-    setCorrectAnswers(correct);
+    // setCorrectAnswers(correct);
 
     // Set chart data based on correct, incorrect, and not attempted counts
     setChartData([
