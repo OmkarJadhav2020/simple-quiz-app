@@ -262,7 +262,7 @@ const Home: React.FC = () => {
                       {selectedOptions[index] ? "✓" : ""}
                     </span>
                   )}
-                  <span className="absolute bottom-[-25]">{index + 1}</span>
+                  <span className="absolute bottom-[-25px]">{index + 1}</span>
                 </div>
               ))}
             </div>
